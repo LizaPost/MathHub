@@ -69,4 +69,6 @@ MathHub currently includes:
 - JavaScript 
 - SVG
 
-No external frameworks or libraries are required.
+No external frameworks or libraries are required. 
+
+# Try it yourself: https://lizapost.github.io/MathHub/ 
