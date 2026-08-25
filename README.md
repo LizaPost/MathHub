@@ -71,4 +71,4 @@ MathHub currently includes:
 
 No external frameworks or libraries are required. 
 
-# Try it yourself: https://lizapost.github.io/MathHub/ 
+Try it yourself: https://lizapost.github.io/MathHub/ 
