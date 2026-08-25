@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MathHub</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <h1>Math Hub</h1>
+                <p>Formulas Calculators Practice</p>
+            </div>
+        </header>
+        <main class="math-grid">
+            <button class="math-card multiplication" data-quiz="multiplication" type="button">
+                <h2>Multiplication &amp; Division</h2>
+                <p>Practice your math facts</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card fractions" data-quiz="fractions" type="button">
+                <h2>Fractions &amp; Percentages</h2>
+                <p>Fractions, decimals, percentages</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card powers" data-quiz="powers" type="button">
+                <h2>Powers &amp; Roots</h2>
+                <p>Exponents, radicals, simplification</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card geometry" data-quiz="geometry" type="button">
+                <h2>Geometry</h2>
+                <p>Shapes, angles, perimeters, areas</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card solid-geometry" data-quiz="solid-geometry" type="button">
+                <h2>Solid Geometry</h2>
+                <p>Volumes, surface areas, and more</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card trigonometry" data-quiz="trigonometry" type="button">
+                <h2>Trigonometry</h2>
+                <p>Triangles, sin, cos, and more</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card algebra" data-quiz="algebra" type="button">
+                <h2>Algebra</h2>
+                <p>Formulas, expressions, equations</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+            <button class="math-card calculus" data-quiz="calculus" type="button">
+                <h2>Calculus</h2>
+                <p>Limits, derivatives, integrals</p>
+                <span class="arrow" aria-hidden="true">→</span>
+            </button>
+        </main>
+        <div class="modal" id="quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title" tabindex="-1">
+            <div class="modal-content">
+                <button class="close-button" type="button" aria-label="Close quiz">&times;</button>
+                <header class="practice-header">
+                    <h2 id="quiz-title"></h2>
+                    <p class="quiz-subtitle"></p>
+                </header>
+                <div class="progress">
+                    <span class="question-number"></span>
+                    <span class="score"></span>
+                </div>
+                <div class="question-area">
+                    <h3 class="task"></h3>
+                    <div class="geometry-diagram" hidden></div>
+                    <div class="question-content"></div>
+                    <input 
+                        type="number"
+                        step="any"
+                        class="answer-input"
+                        autocomplete="off"
+                        aria-label="Your answer"
+                    >
+                    <button class="check-button" type="button">Check</button>
+                    <p class="feedback" aria-live="polite"></p>
+                </div>
+                <div class="result" hidden>
+                    <div class="result-icon" aria-hidden="true">✓</div>
+                    <h2>Practice Complete!</h2>
+                    <p class="final-score"></p>
+                    <p class="final-message"></p>
+                    <button class="restart-button" type="button">Let's go again</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>"The more you practice, the stronger your math skills become!"</p>
+        </footer>
+
+        <script src="js/diagrams/geometry-diagrams.js"></script>
+        <script src="js/diagrams/DiagramFactory.js"></script> 
+
+        <script src="js/questions/question-generators.js"></script> 
+        <script src="js/questions/QuestionRegistry.js"></script>
+        <script src="js/questions/QuestionFactory.js"></script> 
+        
+        <script src="js/core/AnswerValidator.js"></script> 
+        <script src="js/core/QuestionManager.js"></script> 
+        <script src="js/core/ModalController.js"></script> 
+        <script src="js/core/QuizController.js"></script>
+
+        <script src="js/app.js"></script>
+
+    </body>
+</html>
+    
