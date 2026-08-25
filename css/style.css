@@ -1,0 +1,532 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(80, 160, 255, 0.12), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(170, 120, 255, 0.12), transparent 25%),
+        #f4f8ff;
+    color: #12264a;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 70px 25px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: #102957;
+}
+
+.logo p {
+    margin-top: 12px;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+    color: #233d6d;
+}
+
+.math-grid {
+    width: min(1280px, 92%);
+    margin: 25px auto 35px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+        "multiplication fractions powers geometry"
+        "solid trigonometry algebra calculus";
+    gap: 16px;
+}
+
+.math-card {
+    position: relative;
+    min-height: 245px;
+    padding: 28px;
+    border: 1px solid rgba(50, 120, 220, 0.18);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center; 
+    font-family: inherit; 
+    text-align: left;
+    color: #102957;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(40, 80, 130, 0.08); 
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.math-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 35px rgba(40, 80, 130, 0.16);
+}
+
+.math-card:focus-visible {
+    outline: 3px solid #6ea8e5; 
+    outline-offset: 3px;
+}
+
+.math-card h2 {
+    font-size: 1.55rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.math-card p {
+    max-width: 230px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #344c72;
+}
+
+.arrow {
+    position: absolute;
+    right: 25px;
+    bottom: 22px;
+    font-size: 2rem;
+    opacity: 0.65;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.math-card:hover .arrow {
+    transform: translateX(6px);
+    opacity: 1;
+}
+
+.multiplication {
+    grid-area: multiplication;
+    background: #ffe4df;
+}
+
+.fractions {
+    grid-area: fractions;
+    background: #d9f1ff;
+}
+
+.powers {
+    grid-area: powers;
+    background: #f8def2;
+} 
+
+.geometry {
+    grid-area: geometry;
+    background: #dceeff;
+} 
+
+.solid-geometry {
+    grid-area: solid;
+    background: #dcf7ed;
+} 
+
+.trigonometry {
+    grid-area: trigonometry;
+    background: #fff1d2;
+} 
+
+.algebra {
+    grid-area: algebra;
+    background: #e9e2ff;
+}
+
+.calculus {
+    grid-area: calculus;
+    background: #d8f3f1;
+}
+
+.footer {
+    width: min(900px, 90%);
+    margin: 0 auto 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #58709a;
+} 
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(16, 41, 87, 0.38);
+    backdrop-filter: blur(7px);
+    z-index: 1000;
+}
+
+.modal.active {display: flex;}
+
+.modal-content {
+    position: relative;
+    width: min(900px, 100%); 
+    /*min-height: 500px; */ 
+    height: min(600px, calc(100vh - 40px));
+    max-height: calc(100vh - 40px);
+    padding: 35px;
+    overflow-y: auto; 
+    background: #f4f8ff;
+    color: #102957;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(16, 41, 87, 0.25);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+} 
+
+.close-button {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #dceeff;
+    color: #102957;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+} 
+
+.close-button:hover {
+    background: #c8e3ff;
+    transform: rotate(90deg);
+} 
+
+.close-button:focus-visible {
+    outline: 3px solid #6ea8e5; 
+    outline-offset: 2px;
+} 
+
+.practice-header {
+    text-align: center; 
+    margin-bottom: 25px;
+}
+
+.practice-header h2 {
+    margin-bottom: 8px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.1rem;
+    color: #102957;
+}
+
+.practice-header p {
+    font-size: 1rem;
+    color: #58709a;
+}
+
+.progress {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 25px; 
+    padding: 12px 18px;
+    background: #dceeff;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600; 
+    color: #233d6d;
+} 
+
+.question-area {
+    width: 100%; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start; 
+    text-align: center;
+} 
+
+.task {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #58709a; 
+} 
+
+.question-content {
+    min-height: 50px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 5px 0 15px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #102957;
+} 
+
+.geometry-diagram {
+    width: 100%;
+    min-height: 280px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+} 
+
+.geometry-diagram[hidden] {
+    display: none;
+}
+
+.geometry-diagram svg {
+    display: block;
+    width: 100%; 
+    max-width: 320px; 
+    height: auto; 
+} 
+
+.question-area.has-diagram {
+    display: grid;  
+    grid-template-columns: 1fr 1.4fr; 
+    align-items: center; 
+    gap: 30px; 
+    /*text-align: center;*/
+} 
+
+.question-area.has-diagram .geometry-diagram {
+    grid-column: 1; 
+    /*grid-row: 1 / span 4;*/ 
+    grid-row: 1 / span 5;
+} 
+
+.question-area.has-diagram .task, 
+.question-area.has-diagram .question-content, 
+.question-area.has-diagram .answer-input, 
+.question-area.has-diagram .check-button, 
+.question-area.has-diagram .feedback {
+    grid-column: 2; 
+    justify-self: center; 
+} 
+
+.answer-input {
+    width: 180px;
+    padding: 13px 16px;
+    border: 2px solid #b8d5f5;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #102957;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.answer-input:focus {
+    border-color: #6ea8e5;
+    box-shadow: 0 0 0 4px rgba(80, 160, 255, 0.12);
+} 
+
+.check-button, 
+.restart-button {
+    width: 180px; 
+    padding: 12px 30px;
+    border: none;
+    border-radius: 14px; 
+    background: #102957;
+    color: #ffffff; 
+    font-family: inherit; 
+    font-size: 1rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+} 
+
+.check-button {
+    margin-top: 20px;
+}
+
+.check-button:hover, 
+.restart-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(16, 41, 87, 0.2);
+}
+
+.check-button:focus-visible, 
+.restart-button:focus-visible {
+    outline: 3px solid #6ea8e5; 
+    outline-offset: 3px;
+} 
+
+.check-button:disabled {
+    opacity: 0.6; 
+    cursor: not-allowed; 
+    transform: none; 
+    box-shadow: none;
+} 
+
+.feedback {
+    min-height: 25px;
+    margin-top: 18px; 
+    font-size: 1rem; 
+    font-weight: 600; 
+    color: #344c72;
+    text-align: center;
+}
+
+/*.result {
+    width: 100%;
+    text-align: center;
+}*/
+
+.result {
+    width: 100%;
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.result-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%;
+    background: #dcf7ed;
+    color: #237052; 
+    font-size: 2.2rem;
+    font-weight: bold;
+} 
+
+.result h2 {
+    margin-bottom: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-size: 2.4rem;
+    color: #102957;
+} 
+
+.final-score {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: 700; 
+    color: #102957;
+}
+
+.final-message {
+    margin-bottom: 30px;
+    font-size: 1rem;
+    color: #58709a;
+}
+
+.integral {
+    display: inline-flex; 
+    align-items: center; 
+    vertical-align: middle;
+} 
+
+.integral-symbol {
+    font-size: 3rem;
+    line-height: 0.8;
+} 
+
+.integral-limits {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 3rem; 
+    margin-right: 2px; 
+    font-size: 0.7rem; 
+    line-height: 1;
+}
+
+.equation {
+    display: inline-flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    text-align: left; 
+}
+
+.equation-answer {
+    margin-top: 10px;
+} 
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* Responsiveness */
+
+@media (max-width: 1000px) {
+    .math-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "multiplication fractions"
+            "powers geometry"
+            "solid trigonometry"
+            "algebra calculus"
+    }
+    .logo h1 {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .header {padding: 25px 30px 20px;}
+    .logo h1 {font-size: 2.5rem;}
+    .logo p {font-size: 0.9rem;}
+    .math-grid {
+        width: 94%;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "multiplication" 
+            "fractions"
+            "powers" 
+            "geometry"
+            "solid" 
+            "trigonometry"
+            "algebra" 
+            "calculus"
+    } 
+    .math-card {min-height: 210px;} 
+    .modal {padding: 10px;} 
+    .modal-content {
+        height: calc(100vh - 20px);
+        min-height: 0; 
+        padding: 30px 20px; 
+        max-height: calc(100vh - 20px);
+    }
+    .practice-header h2 {font-size: 1.7rem;} 
+    .progress {width: 100%;} 
+    .question-area.has-diagram {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    } 
+    .question-area.has-diagram .geometry-diagram, 
+    .question-area.has-diagram .task, 
+    .question-area.has-diagram .question-content, 
+    .question-area.has-diagram .answer-input, 
+    .question-area.has-diagram .check-button, 
+    .question-area.has-diagram .feedback {
+        grid-column: 1; 
+        grid-row: auto;
+    }
+    .geometry-diagram {min-height: 200px;} 
+    .geometry-diagram svg {max-width: 250px;} 
+    .question-content {font-size: 1.7rem;} 
+    .answer-input {
+        width: 160px; 
+        font-size: 2rem;
+    }
+    .footer {
+        width: 94%;
+        font-size: 0.9rem;
+    }
+} 
